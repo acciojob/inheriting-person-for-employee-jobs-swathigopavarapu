@@ -5,12 +5,12 @@ function Person(name, age) {
 }
 
 Person.prototype.greet = function() {
-  console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+  console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
 };
 
 // Define the Employee class that inherits from Person
 function Employee(name, age, jobTitle) {
-  // Call the parent constructor using 'call' to inherit properties
+  // Call the parent constructor
   Person.call(this, name, age);
   this.jobTitle = jobTitle;
 }
@@ -18,12 +18,14 @@ function Employee(name, age, jobTitle) {
 // Inherit methods from Person prototype
 Employee.prototype = Object.create(Person.prototype);
 
-// Reset constructor to Employee
+// Reset constructor
 Employee.prototype.constructor = Employee;
 
 // Define jobGreet() for Employee
 Employee.prototype.jobGreet = function() {
-  console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+  console.log(
+    `Hello, my name is ${this.name} and I am ${this.age} years old, and my job title is ${this.jobTitle}.`
+  );
 };
 
 // Do not change code below this line
